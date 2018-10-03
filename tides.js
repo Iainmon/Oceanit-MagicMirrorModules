@@ -53,6 +53,8 @@ Module.register("tides",{
         // this.threads.updateThread = new Thread( () => {
         //     this.update();
         // }, 1000, true);
+        console.log("hello");
+        Log.log("hello2");
         this.threads.queryJSON = new Thread( ()  => {
             Network.pullJSON(this.config.jsonURL, (status, jsonResponse) => {
                 if (status == null) {
