@@ -69,6 +69,8 @@ Module.register("tides",{
         this.moduleVariables.error = {
             message: msg
         }
+        console.log(msg);
+        Log.log(msg);
         this.updateDom(100);
     },
 
