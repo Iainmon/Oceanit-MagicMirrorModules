@@ -20,8 +20,8 @@ Module.register("tides",{
 	getDom: function() {
         var wrapper = document.createElement("div");
 
-        if (!!this.error) {
-            wrapper.innerHTML = this.error.message;
+        if (!!this.moduleVariables.error) {
+            wrapper.innerHTML = this.moduleVariables.error.message;
             return wrapper;
         }
 
