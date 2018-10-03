@@ -33,6 +33,12 @@ Module.register("tides",{
     start: function() {
         this.mySpecialProperty = "So much wow!";
         Log.log(this.name + ' is started!');
+        this.updateThread = new Thread( () => {
+            this.update();
+        }, 1000, true);
     },
+    update: function() {
+        this.updateDom(300);
+    }
 
 });
