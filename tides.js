@@ -59,7 +59,7 @@ Module.register("tides",{
             Network.pullJSON(this.config.jsonURL, (status, jsonResponse) => {
                 if (status == null) {
                     this.tideJson = jsonResponse;
-                    this.error(this.tideJson);
+                    this.error("Loaded with response 200 but no json. :(");
                 } else {
                     this.error("Couldn't connect to the API Servers!");
                 }
