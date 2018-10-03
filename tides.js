@@ -1,12 +1,20 @@
 Module.register("tides",{
 	// Default module config.
 	defaults: {
-		text: "The tide is high today."
+        text: "The tide is high today.",
+        jsonURL: "http://dev.nexal.net/tides.json"
     },
 
-    buffer: {
+    moduleVariables: {
+        updateCount: 0,
+        lastAPIQueryTime: undefined,
+        tideJson: undefined,
+    },
+
+    threads: {
 
     },
+
 	// Override dom generator.
 	getDom: function() {
         var wrapper = document.createElement("div");
@@ -37,14 +45,23 @@ Module.register("tides",{
     start: function() {
         this.mySpecialProperty = "So much wow!";
         Log.log(this.name + ' is started!');
-        this.buffer.text += "hello";
 
-        this.updateThread = new Thread( () => {
+        this.threads.updateThread = new Thread( () => {
             this.update();
         }, 1000, true);
+        this.threads.queryJSON = new Thread( ()  => {
+            Network.pullJSON(this.config.jsonURL, (status, jsonResponse) => {
+                if (status == null) {
+                    this.tideJson = jsonResponse;
+                    this.update();
+                } else {
+                    this.error("Couldn't connect to the API Servers!");
+                }
+            }, 1000 * 60 * 60, true);
+        });
     },
-    update: function() {
-        this.updateDom(300);
-    }
 
+    update: function () {
+        this.updateDom();
+    }
 });
