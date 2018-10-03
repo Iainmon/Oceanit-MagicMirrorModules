@@ -2,12 +2,16 @@ Module.register("tides",{
 	// Default module config.
 	defaults: {
 		text: "The tide is high today."
-	},
+    },
 
+    buffer: {
+
+    },
 	// Override dom generator.
 	getDom: function() {
-		var wrapper = document.createElement("div");
-		wrapper.innerHTML = this.config.text;
+        var wrapper = document.createElement("div");
+        this.buffer.text += this.buffer.text;
+		wrapper.innerHTML = this.buffer.text;
 		return wrapper;
     },
 
@@ -33,6 +37,8 @@ Module.register("tides",{
     start: function() {
         this.mySpecialProperty = "So much wow!";
         Log.log(this.name + ' is started!');
+        this.buffer.text += "hello";
+
         this.updateThread = new Thread( () => {
             this.update();
         }, 1000, true);
