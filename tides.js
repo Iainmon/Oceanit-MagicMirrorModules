@@ -9,6 +9,7 @@ Module.register("tides",{
         updateCount: 0,
         lastAPIQueryTime: undefined,
         tideJson: undefined,
+        error: false
     },
 
     threads: {
@@ -18,8 +19,13 @@ Module.register("tides",{
 	// Override dom generator.
 	getDom: function() {
         var wrapper = document.createElement("div");
-        this.buffer.text += this.buffer.text;
-		wrapper.innerHTML = this.buffer.text;
+
+        if (!!this.error) {
+            wrapper.innerHTML = this.error.message;
+            return wrapper;
+        }
+
+		wrapper.innerHTML = "DOM is working!";
 		return wrapper;
     },
 
@@ -46,22 +52,29 @@ Module.register("tides",{
         this.mySpecialProperty = "So much wow!";
         Log.log(this.name + ' is started!');
 
-        this.threads.updateThread = new Thread( () => {
-            this.update();
-        }, 1000, true);
+        // this.threads.updateThread = new Thread( () => {
+        //     this.update();
+        // }, 1000, true);
         this.threads.queryJSON = new Thread( ()  => {
             Network.pullJSON(this.config.jsonURL, (status, jsonResponse) => {
                 if (status == null) {
                     this.tideJson = jsonResponse;
-                    this.update();
+                    this.error(this.tideJson);
                 } else {
                     this.error("Couldn't connect to the API Servers!");
                 }
-            }, 1000 * 60 * 60, true);
+            }, 2000, true);
         });
     },
 
+    error: function (msg) {
+        this.moduleVariables.error = {
+            message: msg
+        }
+        this.updateDom(100);
+    },
+
     update: function () {
-        this.updateDom();
+        this.updateDom(100);
     }
 });
