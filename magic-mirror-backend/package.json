@@ -1,0 +1,11 @@
+{
+  "name": "magic-mirror-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node boot.js test"
+  },
+  "author": "",
+  "license": "ISC"
+}

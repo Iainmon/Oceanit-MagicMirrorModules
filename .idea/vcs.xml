@@ -4,5 +4,9 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/GoogleIsAnAPI" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/GoogleIsAnAPI/Crystal  Code/lib/myhtml/src/ext/modest-c" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Tide Module/GoogleIsAnAPI" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Tide Module/GoogleIsAnAPI/Crystal  Code/lib/myhtml/src/ext/modest-c" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/TideModule" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/TideModule/Crystal  Code/lib/myhtml/src/ext/modest-c" vcs="Git" />
   </component>
 </project>
