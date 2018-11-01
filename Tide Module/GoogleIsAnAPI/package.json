@@ -1,0 +1,11 @@
+{
+  "name": "TideAPIService",
+  "version": "1.0.0",
+  "dependencies": {
+    "async-threading": "^1.0.2",
+    "auto-load": "^3.0.1",
+    "node-fetch": "^2.2.0",
+    "webpage": "^0.3.0",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
