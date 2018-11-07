@@ -25,7 +25,7 @@
     <session id="1812477068">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.4" value="3" />
@@ -53,7 +53,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="8177" />
+          <entry key="js" value="8214" />
           <entry key="json" value="36" />
           <entry key="mjs" value="29" />
         </counts>
@@ -62,7 +62,7 @@
         <counts>
           <entry key="ECMAScript 6" value="29" />
           <entry key="JSON" value="36" />
-          <entry key="JavaScript" value="8177" />
+          <entry key="JavaScript" value="8214" />
         </counts>
       </usages-collector>
     </session>
@@ -72,8 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/magic-mirror-backend/boot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="11" column="11" lean-forward="true" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+            <state relative-caret-position="274">
+              <caret line="41" column="40" lean-forward="true" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -207,17 +207,6 @@
               <item name="magic-mirror-backend" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Oceanit-MagicMirrorModules" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Oceanit-MagicMirrorModules" type="462c0819:PsiDirectoryNode" />
-              <item name="Tide Module" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Oceanit-MagicMirrorModules" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Oceanit-MagicMirrorModules" type="462c0819:PsiDirectoryNode" />
-              <item name="Tide Module" type="462c0819:PsiDirectoryNode" />
-              <item name="GoogleIsAnAPI" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -283,12 +272,12 @@
       <workItem from="1541114573612" duration="3329000" />
       <workItem from="1541192845209" duration="2465000" />
       <workItem from="1541451660736" duration="1964000" />
-      <workItem from="1541491183949" duration="6828000" />
+      <workItem from="1541491183949" duration="7223000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35962000" />
+    <option name="totallyTimeSpent" value="36357000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -317,7 +306,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="Run" order="3" visible="true" weight="0.31257632" />
+      <window_info anchor="right" id="Run" order="3" weight="0.31257632" />
       <window_info anchor="right" id="Terminal" order="4" weight="0.3803419" />
     </layout>
   </component>
@@ -446,8 +435,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/magic-mirror-backend/boot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="11" column="11" lean-forward="true" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        <state relative-caret-position="274">
+          <caret line="41" column="40" lean-forward="true" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
         </state>
       </provider>
     </entry>
