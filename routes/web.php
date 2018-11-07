@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('test', 'TwitterController@test');
 Route::get('twitterUserTimeLine', 'TwitterController@twitterUserTimeLine');
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);
 

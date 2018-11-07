@@ -35,6 +35,7 @@ class TwitterController extends Controller
 
         $newTwitte = ['status' => $request->tweet];
 
+        var_dump($newTwitte);
 
         if(!empty($request->images)){
             foreach ($request->images as $key => $value) {
@@ -45,10 +46,32 @@ class TwitterController extends Controller
             }
         }
 
+        //$twitter = Twitter::postTweet($newTwitte);
 
-        $twitter = Twitter::postTweet($newTwitte);
 
+        //return back();
+    }
 
-        return back();
+    public static function test() {
+        $followers = Twitter::getFollowersIds(['screen_name' => 'iainmoncrief'])->ids;
+        $followerUserNames = [];
+        foreach ($followers as $follower) {
+            $followerScreenName = Twitter::getUsersLookup(['user_id' => $follower])[0]->screen_name;
+            $follower = '@'.$followerScreenName;
+            array_push($followerUserNames, $follower);
+        }
+
+        $userTweetList = "";
+        foreach ($followerUserNames as $name) {
+            echo "Sent to: <br>$name<br>";
+            $userTweetList .= " $name";
+        }
+        $tweetContent = "Testing send all function... ".$userTweetList;
+
+        echo $tweetContent;
+
+        //$twitter = Twitter::postTweet(['status' => $tweetContent]);
+
+        //return response()->json(Twitter::getUsersLookup(['screen_name' => 'iainmoncrief'])[0]->screen_name);
     }
 }
