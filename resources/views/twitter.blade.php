@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Laravel 5 - Twitter API</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -13,9 +13,7 @@
 
     <form method="POST" action="{{ route('post.tweet') }}" enctype="multipart/form-data">
 
-
         {{ csrf_field() }}
-
 
         @if(count($errors))
             <div class="alert alert-danger">

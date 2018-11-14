@@ -17,4 +17,9 @@ Route::get('/', function () {
 Route::get('test', 'TwitterController@test');
 Route::get('twitterUserTimeLine', 'TwitterController@twitterUserTimeLine');
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);
+Route::get('save', 'TwitterController@saveTwitterUserTimeLine');
 
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/{key}', 'TwitterController@pull');
