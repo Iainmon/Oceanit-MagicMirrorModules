@@ -1,0 +1,17 @@
+{
+  "name": "magic-mirror-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node boot.js test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async-threading": "^1.0.2",
+    "microseconds": "^0.1.0",
+    "readline-async": "^0.1.0",
+    "readline-sync": "^1.4.9"
+  }
+}
