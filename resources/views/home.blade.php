@@ -8,7 +8,7 @@
                 <div class="card-header">
                     <div class="custom-control-inline">Dashboard</div>
                     <div class="custom-control-inline">
-                        <a class="btn btn-primary" href="{{ route('validate-user') }}" role="button">Manage Rules</a>
+                        <a class="btn btn-primary" href="{{ route('manage-rules') }}" role="button">Manage Rules</a>
                     </div>
                     @if(\Illuminate\Support\Facades\Auth::user()->isAdmin)
                         <div class="custom-control-inline">

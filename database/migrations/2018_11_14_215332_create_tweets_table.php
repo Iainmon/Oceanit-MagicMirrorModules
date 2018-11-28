@@ -19,7 +19,7 @@ class CreateTweetsTable extends Migration
             $table->string('screen_name');
             $table->bigInteger('tweet_id')->unique();
             $table->string('belongs_to')->nullable();
-            $table->string('content');
+            $table->string('content', 1024);
 
             $table->timestamps();
         });

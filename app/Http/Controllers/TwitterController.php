@@ -8,12 +8,15 @@ use Illuminate\Http\Request;
 use Twitter;
 use File;
 
-
 class TwitterController extends Controller
 {
     /**
      * Create a new controller instance.
      */
+
+    public function __construct() {
+
+    }
 
     public function retrieveAndIndex() {
         $users = User::where('id', '>', 0)->with('preferences')->get();
@@ -97,8 +100,7 @@ class TwitterController extends Controller
         return view('twitter',compact('data'));
     }
 
-    public function saveTwitterUserTimeLineTEST()
-    {
+    public function saveTwitterUserTimeLineTEST() {
         $timeline = Twitter::getUserTimeline(['screen_name' => 'elonmusk', 'count' => 500, 'format' => 'object']);
         $bannedUserCollection = \DB::table('banned_users')->get();
         $bannedUsers = [];

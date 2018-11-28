@@ -12,8 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('home'));
 });
+
 Route::get('ttest', 'TwitterController@twitterUserTimeLine');
 Route::get('test', 'TwitterController@retrieveAndIndex');
 Route::get('twitterUserTimeLine', 'TwitterController@twitterUserTimeLine');
@@ -21,12 +22,15 @@ Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);
 Route::get('save', 'TwitterController@saveTwitterUserTimeLine');
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('home');
 
 Route::get('/reset-key', 'KeyController@reset')->name('reset-key');
 Route::post('/reset-key', 'KeyController@reset')->name('reset-key-post');
 
 Route::get('/validate-users', 'KeyController@validateUser')->name('validate-user');
+
+Route::get('/rules', 'PreferenceController@edit')->name('manage-rules');
+Route::post('/rules', 'PreferenceController@edit')->name('manage-rules-post');
 
 Route::get('api/{userKey}/{key}/{count}', 'TwitterController@pull');
 Route::get('api/{userKey}/{key}', 'TwitterController@pull');
