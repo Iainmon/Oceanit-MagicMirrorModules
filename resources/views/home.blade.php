@@ -14,6 +14,9 @@
                         <div class="custom-control-inline">
                             <a class="btn btn-outline-danger" href="{{ route('validate-user') }}" role="button">Validate Users</a>
                         </div>
+                        <div class="custom-control-inline">
+                            <a class="btn btn-warning" href="{{ route('save-all-tweets') }}" role="button">Scrape New Tweets</a>
+                        </div>
                     @endif
                 </div>
 

@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('ttest', 'TwitterController@twitterUserTimeLine');
-Route::get('test', 'TwitterController@retrieveAndIndex');
+Route::get('grab', 'TwitterController@retrieveAndIndex')->name('save-all-tweets');
 Route::get('twitterUserTimeLine', 'TwitterController@twitterUserTimeLine');
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);
 Route::get('save', 'TwitterController@saveTwitterUserTimeLine');

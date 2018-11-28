@@ -18,7 +18,10 @@ class TwitterController extends Controller
 
     }
 
-    public function retrieveAndIndex() {
+    public function retrieveAndIndex(Request $request) {
+
+        $this->middleware('auth');
+
         $users = User::where('id', '>', 0)->with('preferences')->get();
         foreach ($users as $user) {
             foreach ($user->preferences as $preference) {
@@ -27,6 +30,10 @@ class TwitterController extends Controller
                 }
             }
         }
+
+        $request->session()->flash('status', 'Indexed all tweets.');
+
+        return redirect(route('home'));
     }
 
     public function saveTwitterUserTimeLine($screenName, $user)
