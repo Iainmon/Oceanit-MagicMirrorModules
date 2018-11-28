@@ -16,6 +16,11 @@ class TwitterController extends Controller
     /**
      * Create a new controller instance.
      */
+
+
+    
+
+
     public function twitterUserTimeLine()
     {
         $data = Twitter::getUserTimeline(['screen_name' => 'iainmoncrief', 'count' => 10, 'format' => 'array']);
@@ -102,17 +107,15 @@ class TwitterController extends Controller
     }
 
 
-    public function pull(Request $request, $key) {
+    public function pull($userKey, $key) {
 
-        if (!$request->has('email')) return response('Invalid email.');
-
-        $user = User::where('email', $request->input('email'))->first();
+        $user = User::where('user_key', $userKey)->first();
 
         if (!isset($user) || $user->key != $key) {
             return response('Invalid API key.');
         }
 
-        echo $request->input('email');
+        if (!$user->validated) return response('You have not yet been validated.');
 
         $tweets = Tweet::where('belongs_to', $user->email)->take(10)->get();
         foreach ($tweets as $tweet) {

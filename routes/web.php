@@ -22,4 +22,9 @@ Route::get('save', 'TwitterController@saveTwitterUserTimeLine');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/{key}', 'TwitterController@pull');
+Route::get('/reset-key', 'KeyController@reset')->name('reset-key');
+Route::post('/reset-key', 'KeyController@reset')->name('reset-key-post');
+
+Route::get('/validate-users', 'KeyController@validateUser')->name('validate-user');
+
+Route::get('api/{userKey}/{key}/', 'TwitterController@pull');
