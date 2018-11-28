@@ -46,7 +46,7 @@
                                         </div>
 
                                         <div class="modal-body">
-                                            <code>{{ url('api') }}{{ $user->user_id }}/{{ $user->key }}</code>
+                                            <code>{{ url('api') }}/{{ $user->user_key }}/{{ $user->key }}</code>
                                         </div>
                                     </div>
                                 </div>

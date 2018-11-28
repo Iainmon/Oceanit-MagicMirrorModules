@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Http\Controllers;
-
 
 use App\Tweet;
 use App\User;
@@ -17,8 +15,79 @@ class TwitterController extends Controller
      * Create a new controller instance.
      */
 
+    public function retrieveAndIndex() {
+        $users = User::where('id', '>', 0)->with('preferences')->get();
+        foreach ($users as $user) {
+            foreach ($user->preferences as $preference) {
+                if ($preference->type == '@') {
+                    self::saveTwitterUserTimeLine($preference->twitter_identification, $user);
+                }
+            }
+        }
+    }
 
-    
+    public function saveTwitterUserTimeLine($screenName, $user)
+    {
+        $timeline = Twitter::getUserTimeline(['screen_name' => $screenName, 'count' => 500, 'format' => 'object']);
+        $bannedUserCollection = \DB::table('banned_users')->get();
+        $bannedUsers = [];
+        foreach ($bannedUserCollection as $bannedUser) array_push($bannedUsers, $bannedUser);
+        $tweetModels = [];
+        $rejectedTweetModels = [];
+        foreach ($timeline as $tweet) {
+
+            //if the user is banned, then don't add tweet to the database.
+            if (in_array($tweet->user->screen_name, $bannedUsers)) {
+                array_push($rejectedTweetModels, Tweet::firstOrCreate(
+                    [
+                        'tweet_id' => $tweet->id
+                    ],
+                    [
+                        'screen_name' => $tweet->user->screen_name,
+                        'tweet_id' => $tweet->id,
+                        'content' => $tweet->text
+                    ]
+                ));
+                continue;
+            }
+
+            //in the future, process tweets
+
+            array_push($tweetModels, Tweet::firstOrCreate(
+                [
+                    'tweet_id' => $tweet->id
+                ],
+                [
+                    'screen_name' => $tweet->user->screen_name,
+                    'tweet_id' => $tweet->id,
+                    'content' => $tweet->text,
+                    'belongs_to' => $user->email
+                ]
+            ));
+        }
+
+        //save all
+        foreach ($tweetModels as $tweetModel) $tweetModel->save();
+        foreach ($rejectedTweetModels as $tweetModel) $tweetModel->save();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public function twitterUserTimeLine()
@@ -28,7 +97,7 @@ class TwitterController extends Controller
         return view('twitter',compact('data'));
     }
 
-    public function saveTwitterUserTimeLine()
+    public function saveTwitterUserTimeLineTEST()
     {
         $timeline = Twitter::getUserTimeline(['screen_name' => 'elonmusk', 'count' => 500, 'format' => 'object']);
         $bannedUserCollection = \DB::table('banned_users')->get();
@@ -107,7 +176,7 @@ class TwitterController extends Controller
     }
 
 
-    public function pull($userKey, $key) {
+    public function pull($userKey, $key, $count = 10) {
 
         $user = User::where('user_key', $userKey)->first();
 
@@ -117,10 +186,11 @@ class TwitterController extends Controller
 
         if (!$user->validated) return response('You have not yet been validated.');
 
-        $tweets = Tweet::where('belongs_to', $user->email)->take(10)->get();
+        $tweets = Tweet::where('belongs_to', $user->email)->take($count)->get();
         foreach ($tweets as $tweet) {
             //tweet formatting
             unset($tweet->id);
+            unset($tweet->belongs_to);
         }
 
         return response()->json($tweets);
