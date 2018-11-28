@@ -49,7 +49,7 @@ class PreferenceController extends Controller {
                 $rule = UserPreference::where('id', $request->get('rule-id'))->first();
                 $rule->filter = !$rule->filter;
                 $rule->save();
-                return $this->view($request);
+                return redirect(route('manage-rules'));
                 break;
         }
     }
@@ -70,7 +70,7 @@ class PreferenceController extends Controller {
         $newPreference->save();
 
         $request->session()->flash('status', 'Rule has been added.');
-        return back();
+        return redirect(route('manage-rules'));
     }
 
     public function delete(Request $request) {
@@ -82,6 +82,6 @@ class PreferenceController extends Controller {
         $newPreference->save();
 
         $request->session()->flash('status', 'Rule has been added.');
-        return back();
+        return redirect(route('manage-rules'));
     }
 }

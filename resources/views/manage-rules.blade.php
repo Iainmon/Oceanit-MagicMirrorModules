@@ -28,7 +28,7 @@
                                             @csrf
                                             <input type="text" name="action" value="create" style="display: none;">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="exampleRadios" id="username"
+                                                <input class="form-check-input" type="radio" name="type" id="username"
                                                        value="@" checked>
                                                 <label class="form-check-label" for="username">
                                                     Username
@@ -51,7 +51,7 @@
                                                 <small id="emailHelp" class="form-text text-muted"><b>You must exclude '@' and '#' symbols.</b></small>
                                             </div>
                                             <div class="form-check">
-                                                <input name="filter" class="form-check-input" type="checkbox" value="" id="filter"
+                                                <input name="filter-results" class="form-check-input" type="checkbox" value="" id="filter"
                                                        checked>
                                                 <label class="form-check-label" for="filter">
                                                     Filter for explicit language.
