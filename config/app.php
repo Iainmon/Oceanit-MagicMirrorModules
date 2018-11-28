@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => 'Magic Mirror Twitter API',
 
     /*
     |--------------------------------------------------------------------------
@@ -175,6 +175,7 @@ return [
 
 
         Thujohn\Twitter\TwitterServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -226,6 +227,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 

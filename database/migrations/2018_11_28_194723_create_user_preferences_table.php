@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTweetsTable extends Migration
+class CreateUserPreferencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateTweetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tweets', function (Blueprint $table) {
+        Schema::create('user_preferences', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('screen_name');
-            $table->bigInteger('tweet_id')->unique();
-            $table->string('belongs_to')->nullable();
-            $table->string('content', 1024);
+            $table->string('user_email');
+            $table->string('type', 1);
+            $table->string('twitter_identification'); //name of a hashtag or the name of a user
+            $table->boolean('filter')->default(true);
 
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ class CreateTweetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tweets');
+        Schema::dropIfExists('user_preferences');
     }
 }
