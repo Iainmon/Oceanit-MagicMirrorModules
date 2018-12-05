@@ -90,16 +90,6 @@ class TwitterController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
     public function twitterUserTimeLine()
     {
         $data = Twitter::getUserTimeline(['screen_name' => 'iainmoncrief', 'count' => 10, 'format' => 'array']);
@@ -195,7 +185,7 @@ class TwitterController extends Controller
 
         if (!$user->validated) return response('You have not yet been validated.');
 
-        $tweets = Tweet::where('belongs_to', $user->email)->take($count)->get();
+        $tweets = Tweet::orderBy('id', 'desc')->where('belongs_to', $user->email)->take($count)->get();
         foreach ($tweets as $tweet) {
             //tweet formatting
             unset($tweet->id);
